@@ -1,7 +1,7 @@
 var connection = require("./connection.js");
 
 var orm = {
-    selectAll: function(whatToSelect, tableInput, cb) {
+    selectAll: function(tableInput, cb) {
         //this function will select all the needed columns from the todos table
         // SELECT * FROM ??
         var queryString = "SELECT * FROM ?? ;";
