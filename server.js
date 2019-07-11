@@ -1,33 +1,37 @@
-//Requiring express for the server
-var express = require('express');
+var express = require("express");
 
-//Setting the port for server
-var PORT = process.env.PORT || 3030;
+var PORT = process.env.PORT || 8080;
 
 var app = express();
 
-//Server static content from the public folder 
+// Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-//Parsing request body as a JSON object
-app.use(express.urlencoded({ extended:true }));
+// Parse application body
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Telling server to require the handlebars application
-var exphbs = require('express-handlebars');
+// Set Handlebars
+var exphbs = require("express-handlebars");
 
-//Telling express to use the npm express-handlebars in a default layout
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-//Telling express that we want to use handlebars to populate the html view
-app.set("view engine" , "handlebars");
+app.set("view engine", "handlebars");
 
-//Importing routes in order to give the server access to them
+
+// app.set('views', path.join(__dirname, '..', 'views'));
+
+// app.engine("handlebars", exphbs({ defaultLayout: "main",
+// layoutsDir: path.join(__dirname, '..', 'views', 'layouts'),
+// partialsDir: path.join(__dirname, '..', 'views', 'partials')}
+// ));
+
+// Import routes and give the server access to them.
 var routes = require("./controllers/todo_controller.js");
 
-//requires a middlewear function
-// app.use(routes);
+app.use(routes);
 
-//Asking the server to listen for any changes on the PORT we specified above
-app.listen(PORT, function(){
-    console.log("App is now listening at localhost: " + PORT);
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });

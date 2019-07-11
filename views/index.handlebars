@@ -1,0 +1,28 @@
+<h2>Tasks to do:</h2>
+<ul>
+  {{#each todo}}
+    {{#if done}}
+        {{>todos/todos-block done=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Finished Tasks:</h2>
+<ul>
+  {{#each todo}}
+    {{#unless done}}
+        {{>todos/todos-block done=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="newTodo">To Do Item:</label>
+    <input type="text" id="newTodo" name="todo">
+  </div>
+
+  <button type="submit">Add Item</button>
+
+</form>
