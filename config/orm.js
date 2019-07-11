@@ -4,10 +4,10 @@ var orm = {
     selectAll: function(whatToSelect, tableInput, cb) {
         //this function will select all the needed columns from the todos table
         // SELECT * FROM ??
-        var queryString = "SELECT ?? FROM ??";
-        connection.query(queryString, [whatToSelect , tableInput], function(err, res){
+        var queryString = "SELECT * FROM ?? ;";
+        connection.query(queryString, [tableInput], function(err, res){
             if (err) {throw err};
-            console.log(result);
+            console.log(res);
             //pass data back to the caller
             cb(res);
         });
