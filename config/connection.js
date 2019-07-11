@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 
 //creating connection to the local db
 connection.connect(function(err){
-    iff(err){
+    if(err){
         console.error("Error connecting: " + err.stack);
         return;
     }

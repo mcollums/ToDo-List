@@ -2,7 +2,7 @@ var orm = require("../config/orm.js");
 
 var thisTodo = {
     selectAll: function(cb) {
-        orm.selectAll("*", "todo_table", function(res){
+        orm.selectAll("todo_table", function(res){
             cb(res);
         });
     },
