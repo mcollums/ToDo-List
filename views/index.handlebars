@@ -1,18 +1,18 @@
 <h2>Tasks to do:</h2>
 <ul>
   {{#each todo}}
-    {{#if done}}
+    {{#unless done}}
         {{>todos/todos-block done=false}}
-    {{/if}}
+    {{/unless}}
   {{/each}}
 </ul>
 
 <h2>Finished Tasks:</h2>
 <ul>
   {{#each todo}}
-    {{#unless done}}
+    {{#if done}}
         {{>todos/todos-block done=true}}
-    {{/unless}}
+    {{/if}}
   {{/each}}
 </ul>
 
