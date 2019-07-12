@@ -9,14 +9,15 @@ var todosModel = require("../models/todo.js");
 
 router.get("/", function(req, res){
     todosModel.selectAll(function(data){
-        console.log(data);
+        // console.log(data);
         var hbsObj = {todo:data};
         res.render("index", hbsObj);
     });
 });
 
 router.post("/api/todo", function(req, res){
-    todosModel.insertOne(newTodo,req.body.todo, function(data){
+    console.log(req.body.todo);
+    todosModel.insertOne("newTodo",req.body.todo, function(data){
         res.json({id:result.insertId});
     })
 });
