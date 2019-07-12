@@ -11,27 +11,29 @@ router.get("/", function(req, res){
     todosModel.selectAll(function(data){
         // console.log(data);
         var hbsObj = {todo:data};
-        res.render("index", hbsObj);
+        res.render("../views/index", hbsObj);
     });
 });
 
 router.post("/api/todo", function(req, res){
     console.log(req.body.todo);
-    todosModel.insertOne("newTodo",req.body.todo, function(data){
-        res.json({id:result.insertId});
-    })
+    todosModel.insertOne(req.body.todo, function(data){
+        res.json(data);
+    });
 });
 
 router.put("/api/todo/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
-    console.log("condition", condition);
+    console.log("PUT condition:" + condition);
+    console.log("Req.body.done condition:" + req.body.done);
+
   
-    cat.update(
+    todosModel.updateOne(
       {
-        done: req.body.done
+        done: Boolean(req.body.done)
       },
-      condition,
+      "id", +req.params.id,
       function(result) {
         if (result.changedRows === 0) {
           // If no rows were changed, then the ID must not exist, so 404

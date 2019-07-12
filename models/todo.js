@@ -1,21 +1,22 @@
 var orm = require("../config/orm.js");
 
-var thisTodo = {
+var todosModel = {
     selectAll: function(cb) {
         orm.selectAll("todo_table", function(res){
             cb(res);
         });
     },
     insertOne: function(newTodo, cb) {
-        orm.insertOne(newTodo, cb, function(res){
+        console.log("Model newTodo " + newTodo);
+        orm.insertOne(newTodo, function(res){
             cb(res);
         });
     },
-    updateOne: function(updatedTodo, condition, cb){
-        orm.updateOne(updatedTodo, condition, cb, function(res){
+    updateOne: function(updatedTodo, col, value, cb){
+        orm.updateOne(updatedTodo, col, value, cb, function(res){
             cb(res);
         });   
     }
 }
 
-module.exports = thisTodo;
+module.exports = todosModel;

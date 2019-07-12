@@ -1,7 +1,9 @@
 <li>
-	{{todo}}
+	{{item}}
 
-	<button class="change-status" data-id="{{id}}" data-newstatus="{{done}}">
-		{{#if done}}DO AGAIN!{{else}}MARK FINISHED!{{/if}}
-	</button>
+	{{#unless done}}
+		<button class="change-status" data-id="{{id}}" data-newstatus="{{done}}">
+			MARK FINISHED!
+		</button>
+	{{/unless}}
 </li>
