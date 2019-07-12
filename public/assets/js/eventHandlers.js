@@ -27,11 +27,10 @@ $(function() {
       console.log($("#newTodo").val());
   
       var newTodo = {
-        todo: $("#newTodo").val().trim(),
-        // sleepy: $("[name=sleepy]:checked").val().trim()
+        todo: $("#newTodo").val().trim()
       };
   
-      // Send the POST request.
+      // Send the POST request
       $.ajax("/api/todo", {
         type: "POST",
         data: newTodo
